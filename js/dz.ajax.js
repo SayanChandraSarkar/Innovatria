@@ -2,8 +2,8 @@
 Abstract : Ajax Page Js File
 File : dz.ajax.js
 #CSS attributes: 
-	.dzForm : Form class for ajax submission. 
-	.dzFormMsg  : Div Class| Show Form validation error/success message on ajax form submission
+  .dzForm : Form class for ajax submission. 
+  .dzFormMsg  : Div Class| Show Form validation error/success message on ajax form submission
 
 #Javascript Variable
 .dzRes : ajax request result variable
@@ -21,8 +21,9 @@ function contactForm() {
     $("input[data-recaptcha]").val("").trigger("change");
   };
   ("use strict");
+
   var msgDiv;
-  $(".dzForm").on("submit", function (e) {
+  $("#contact_form").on("submit", function (e) {
     e.preventDefault(); //STOP default action
     $(".dzFormMsg").html(
       '<div class="gen alert alert-success">Submitting..</div>'
