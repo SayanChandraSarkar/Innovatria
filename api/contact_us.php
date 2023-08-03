@@ -1,4 +1,5 @@
 <?php
+
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 	
@@ -22,18 +23,15 @@ if(isset($data['firstname']) && isset($data['lastname'])  && isset($data['phone'
 	
 	$success = mail('sledgecoder@gmail.com','Contact us form',$body,$headers);
     if ($success) {
-        echo '{"success":"OK"}';
-        	exit();
-    }
-    else {
+		echo json_encode(["success" => "OK"]);
+        exit();
+    } else {
         $errorMessage = error_get_last()['message'];
-        echo '{"err":"'.$errorMessage.'"}';
+        echo json_encode(["err" => $errorMessage]);
+        exit();
     }
-	
 }
 
-
-
-echo '{"err":"FAIL"}';
+echo json_encode(["err" => "FAIL"]);
 ?>
 
