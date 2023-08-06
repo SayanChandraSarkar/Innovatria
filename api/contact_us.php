@@ -1,9 +1,9 @@
 <?php
+// $json = file_get_contents('php://input');
+// $data = json_decode($json, true);
+$data = $_POST;
 
-$json = file_get_contents('php://input');
-$data = json_decode($json, true);
-	
- 
+
 if(isset($data['firstname']) && isset($data['lastname'])  && isset($data['phone']) && isset($data['email']) && isset($data['message'])){
 	$email = $data['email'];
 
@@ -20,7 +20,7 @@ if(isset($data['firstname']) && isset($data['lastname'])  && isset($data['phone'
 	$headers .= "Reply-To: ".$email;
 
 
-	
+
 	$success = mail('sledgecoder@gmail.com','Contact us form',$body,$headers);
     if ($success) {
 		echo json_encode(["success" => "OK"]);
