@@ -4,12 +4,11 @@ $(document).ready(function () {
     $(".dzFormMsg").html(
       '<div class="gen alert alert-success">Submitting..</div>'
     );
-    var dzFormAction = "submit.php"; // Update the PHP script URL here
     var dzFormData = $(this).serialize();
 
     $.ajax({
       method: "POST",
-      url: dzFormAction,
+      url: "./api/contact_us.php",
       data: dzFormData,
       dataType: "json",
       success: function (response) {
@@ -20,8 +19,8 @@ $(document).ready(function () {
         } else if (response.err) {
           $(".dzFormMsg").html(
             '<div class="err alert alert-danger">Error: ' +
-              response.err +
-              "</div>"
+            response.err +
+            "</div>"
           );
         } else {
           $(".dzFormMsg").html(
